@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const COUPLE_NAMES = { person1: "Cameron", person2: "Jessica" };
+const COUPLE_NAMES = { person1: "Cameron", person2: "Jade" };
 const EVENT_DETAILS = {
   date: "Saturday, 15th March 2026",
   time: "From 4:00 PM",
