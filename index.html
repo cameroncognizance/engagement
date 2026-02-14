@@ -580,13 +580,15 @@
 
           <div id="guests-group" class="form-group hidden" style="animation:floatIn 0.3s ease">
             <label class="form-label">Number of Guests</label>
-            <select id="rsvp-guests" name="guests" class="guest-select">
-              <option value="1">1 Guest</option>
+            <select id="rsvp-guests" name="guests" class="guest-select" onchange="updateGuestNames()">
+              <option value="1">1 Guest (just me)</option>
               <option value="2">2 Guests</option>
               <option value="3">3 Guests</option>
               <option value="4">4 Guests</option>
             </select>
           </div>
+
+          <div id="guest-names-group" class="hidden" style="animation:floatIn 0.3s ease"></div>
 
           <div class="form-group">
             <label class="form-label">Message for the couple (optional)</label>
@@ -678,6 +680,28 @@
       }
 
       updateSubmitBtn();
+    }
+
+    function updateGuestNames() {
+      const count = parseInt(document.getElementById("rsvp-guests").value);
+      const container = document.getElementById("guest-names-group");
+
+      if (count <= 1) {
+        container.classList.add("hidden");
+        container.innerHTML = "";
+        return;
+      }
+
+      container.classList.remove("hidden");
+      let html = "";
+      for (let i = 2; i <= count; i++) {
+        html += `
+          <div class="form-group" style="animation:floatIn 0.3s ease ${i * 0.1}s both">
+            <label class="form-label">Guest ${i} — Full Name</label>
+            <input name="guest-${i}-name" class="form-input" type="text" placeholder="Guest ${i} full name" />
+          </div>`;
+      }
+      container.innerHTML = html;
     }
 
     function updateSubmitBtn() {
