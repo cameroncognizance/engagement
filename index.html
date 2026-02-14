@@ -564,6 +564,10 @@
         <form id="rsvp-form" name="rsvp" method="POST" data-netlify="true" class="rsvp-form hidden" onsubmit="return submitRsvp(event)">
           <input type="hidden" name="form-name" value="rsvp" />
           <input type="hidden" id="rsvp-attending" name="attending" value="" />
+          <!-- Hidden fields so Netlify registers dynamically-added guest name inputs -->
+          <input type="hidden" name="guest-2-name" value="" />
+          <input type="hidden" name="guest-3-name" value="" />
+          <input type="hidden" name="guest-4-name" value="" />
 
           <div class="form-group">
             <label class="form-label">Your Name</label>
